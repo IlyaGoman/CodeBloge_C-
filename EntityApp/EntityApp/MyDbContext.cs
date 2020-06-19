@@ -1,10 +1,13 @@
 ﻿using System;
-
+using System.Data.Entity;
 
 namespace EntityApp
 {
-    class MyDbContext
+    public class MyDbContext: DbContext
     {
+        protected MyDbContext() : base("DbConnectionString")
+        {
 
+        }
     }
 }
