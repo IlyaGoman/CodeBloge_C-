@@ -43,6 +43,8 @@ namespace ClientTCP
             Console.WriteLine(answer.ToString());
             tcpSocket.Shutdown(SocketShutdown.Both);
             tcpSocket.Close();
+
+            Console.ReadLine();
         }
     }
 }

@@ -1,1 +1,6 @@
 F:\C#\CodeBlog\ServerTCP\ServerTCP\bin\Debug\ServerTCP.exe.config
+F:\C#\CodeBlog\CodeBloge_C-\ServerTCP\ServerTCP\bin\Debug\ServerTCP.exe.config
+F:\C#\CodeBlog\CodeBloge_C-\ServerTCP\ServerTCP\bin\Debug\ServerTCP.exe
+F:\C#\CodeBlog\CodeBloge_C-\ServerTCP\ServerTCP\bin\Debug\ServerTCP.pdb
+F:\C#\CodeBlog\CodeBloge_C-\ServerTCP\ServerTCP\obj\Debug\ServerTCP.exe
+F:\C#\CodeBlog\CodeBloge_C-\ServerTCP\ServerTCP\obj\Debug\ServerTCP.pdb
