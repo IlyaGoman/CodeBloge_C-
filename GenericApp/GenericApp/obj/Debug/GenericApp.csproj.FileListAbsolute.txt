@@ -1,0 +1,12 @@
+F:\C#\CodeBlog\GenericApp\GenericApp\bin\Debug\GenericApp.exe.config
+F:\C#\CodeBlog\GenericApp\GenericApp\bin\Debug\GenericApp.exe
+F:\C#\CodeBlog\GenericApp\GenericApp\bin\Debug\GenericApp.pdb
+F:\C#\CodeBlog\GenericApp\GenericApp\obj\Debug\GenericApp.csprojResolveAssemblyReference.cache
+F:\C#\CodeBlog\GenericApp\GenericApp\obj\Debug\GenericApp.exe
+F:\C#\CodeBlog\GenericApp\GenericApp\obj\Debug\GenericApp.pdb
+F:\C#\CodeBlog\CodeBloge_C-\GenericApp\GenericApp\bin\Debug\GenericApp.exe.config
+F:\C#\CodeBlog\CodeBloge_C-\GenericApp\GenericApp\obj\Debug\GenericApp.exe
+F:\C#\CodeBlog\CodeBloge_C-\GenericApp\GenericApp\obj\Debug\GenericApp.pdb
+F:\C#\CodeBlog\CodeBloge_C-\GenericApp\GenericApp\bin\Debug\GenericApp.exe
+F:\C#\CodeBlog\CodeBloge_C-\GenericApp\GenericApp\bin\Debug\GenericApp.pdb
+F:\C#\CodeBlog\CodeBloge_C-\GenericApp\GenericApp\obj\Debug\GenericApp.csprojResolveAssemblyReference.cache
