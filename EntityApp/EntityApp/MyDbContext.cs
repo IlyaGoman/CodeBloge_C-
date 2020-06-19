@@ -5,9 +5,12 @@ namespace EntityApp
 {
     public class MyDbContext: DbContext
     {
-        protected MyDbContext() : base("DbConnectionString")
+        public MyDbContext() : base("DbConnectionString")
         {
 
         }
+
+        public DbSet<Group> GroupSet { get; set; }
+        public DbSet<Song> SongSet { get; set; }
     }
 }
