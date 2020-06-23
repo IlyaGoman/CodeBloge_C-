@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +12,7 @@ namespace SerializationApp
     {
         [NonSerialized]
         private readonly Random rnd = new Random(DateTime.Now.Millisecond);
+
         public int Number { get; set; }
 
         public string Name { get; set; }

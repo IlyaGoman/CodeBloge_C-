@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization.Formatters.Soap;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace SerializationApp
 {
@@ -76,23 +78,46 @@ namespace SerializationApp
             //}
             #endregion
 
-            var soap = new SoapFormatter();
+            #region XML
+            //var xml = new XmlSerializer(typeof(List<Group>));
 
-            using (var file = new FileStream("groups.soap", FileMode.OpenOrCreate))
+            //using (var file = new FileStream("groups.xml", FileMode.OpenOrCreate))
+            //{
+
+            //    xml.Serialize(file, groups);
+            //}
+
+            //using (var file = new FileStream("groups.xml", FileMode.OpenOrCreate))
+            //{
+            //    var newGroups = xml.Deserialize(file) as List<Group>;
+
+            //    if (newGroups != null)
+            //    {
+            //        foreach (var group in newGroups)
+            //        {
+            //            Console.WriteLine(group);
+            //        }
+            //    }
+            //}
+            #endregion
+
+            var json = new DataContractJsonSerializer(typeof(List<Student>));
+
+            using (var file = new FileStream("students.json", FileMode.Create))
             {
 
-                soap.Serialize(file, groups.ToArray());
+                json.WriteObject(file, students);
             }
 
-            using (var file = new FileStream("groups.soap", FileMode.OpenOrCreate))
+            using (var file = new FileStream("students.json", FileMode.Open))
             {
-                var newGroups = soap.Deserialize(file) as Group[];
+                var newStudents = json.ReadObject(file) as List<Student>;
 
-                if (newGroups != null)
+                if (newStudents != null)
                 {
-                    foreach (var group in newGroups)
+                    foreach (var student in newStudents)
                     {
-                        Console.WriteLine(group);
+                        Console.WriteLine(student);
                     }
                 }
             }
