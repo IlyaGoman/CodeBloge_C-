@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization.Formatters.Soap;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,18 +31,64 @@ namespace SerializationApp
                 students.Add(student);
             }
 
-            var binFormatter = new BinaryFormatter();
+            #region Bin
+            //var binFormatter = new BinaryFormatter();
 
-            using (var file= new FileStream("groups.bin", FileMode.OpenOrCreate))
+            //using (var file= new FileStream("groups.bin", FileMode.OpenOrCreate))
+            //{
+            //    binFormatter.Serialize(file, groups);
+            //}
+
+            //using (var file = new FileStream("groups.bin", FileMode.OpenOrCreate))
+            //{
+            //    var newGroups = binFormatter.Deserialize(file) as List<Group>;
+
+            //    if(newGroups!=null)
+            //    {
+            //        foreach (var group in newGroups)
+            //        {
+            //            Console.WriteLine(group);
+            //        }
+            //    }
+            //}
+            #endregion
+
+            #region SOAP
+            //var soap = new SoapFormatter();
+
+            //using (var file = new FileStream("groups.soap", FileMode.OpenOrCreate))
+            //{
+
+            //    soap.Serialize(file, groups.ToArray());
+            //}
+
+            //using (var file = new FileStream("groups.soap", FileMode.OpenOrCreate))
+            //{
+            //    var newGroups = soap.Deserialize(file) as Group[];
+
+            //    if (newGroups != null)
+            //    {
+            //        foreach (var group in newGroups)
+            //        {
+            //            Console.WriteLine(group);
+            //        }
+            //    }
+            //}
+            #endregion
+
+            var soap = new SoapFormatter();
+
+            using (var file = new FileStream("groups.soap", FileMode.OpenOrCreate))
             {
-                binFormatter.Serialize(file, groups);
+
+                soap.Serialize(file, groups.ToArray());
             }
 
-            using (var file = new FileStream("groups.bin", FileMode.OpenOrCreate))
+            using (var file = new FileStream("groups.soap", FileMode.OpenOrCreate))
             {
-                var newGroups = binFormatter.Deserialize(file) as List<Group>;
+                var newGroups = soap.Deserialize(file) as Group[];
 
-                if(newGroups!=null)
+                if (newGroups != null)
                 {
                     foreach (var group in newGroups)
                     {
