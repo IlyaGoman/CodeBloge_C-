@@ -1,0 +1,6 @@
+F:\C#\CodeBlog\InterfaceApp\InterfaceApp\bin\Debug\InterfaceApp.exe.config
+F:\C#\CodeBlog\InterfaceApp\InterfaceApp\obj\Debug\InterfaceApp.csprojResolveAssemblyReference.cache
+F:\C#\CodeBlog\InterfaceApp\InterfaceApp\bin\Debug\InterfaceApp.exe
+F:\C#\CodeBlog\InterfaceApp\InterfaceApp\bin\Debug\InterfaceApp.pdb
+F:\C#\CodeBlog\InterfaceApp\InterfaceApp\obj\Debug\InterfaceApp.exe
+F:\C#\CodeBlog\InterfaceApp\InterfaceApp\obj\Debug\InterfaceApp.pdb
