@@ -76,7 +76,7 @@ namespace FitnessApp.BL.Model
 
         public override string ToString()
         {
-            return Name;
+            return $"UserName: {Name}, gender: {Gender}, birthDate: {BirthDate}, weight: {Weight}, height: {Height}";
         }
     }
 }

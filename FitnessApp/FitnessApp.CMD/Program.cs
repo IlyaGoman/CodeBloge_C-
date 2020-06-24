@@ -12,31 +12,55 @@ namespace FitnessApp.CMD
         static void Main(string[] args)
         {
             Console.WriteLine("Вас приветствует приложение FitnessApp");
-            Console.Write("Введите имя пользователя");
+            
+            Console.Write("Введите имя пользователя: ");
 
             var name = Console.ReadLine();
 
+            if (!IsExistsUser(name))
+            {
+                CreateUser(name);
+            }
+            
+            Console.ReadLine();
+        }
+
+        public static void CreateUser(string name)
+        {
             Console.WriteLine();
-            Console.Write("Введите пол пользователя");
+            Console.Write("Введите пол пользователя: ");
             var gender = Console.ReadLine();
 
             // TODO: Добавить проверки
             Console.WriteLine();
-            Console.Write("Введите дату рождения пользователя");
+            Console.Write("Введите дату рождения пользователя: ");
             var birthDate = DateTime.Parse(Console.ReadLine());
 
             Console.WriteLine();
-            Console.Write("Введите вес пользователя");
+            Console.Write("Введите вес пользователя: ");
             var weight = double.Parse(Console.ReadLine());
 
             Console.WriteLine();
-            Console.Write("Введите рост пользователя");
+            Console.Write("Введите рост пользователя: ");
             var height = double.Parse(Console.ReadLine());
 
             var userController = new UserController(name, gender, birthDate, weight, height);
             userController.Save();
 
-            Console.ReadLine();
+        }
+
+        public static bool IsExistsUser(string name)
+        {
+            var userController = new UserController();
+
+            if (userController.User.Name == name)
+            {
+                Console.WriteLine("Добро пожаловать.Вы вошли как:");
+                Console.WriteLine(userController.User);
+                return true;
+            }
+
+            return false;
         }
     }
 }
