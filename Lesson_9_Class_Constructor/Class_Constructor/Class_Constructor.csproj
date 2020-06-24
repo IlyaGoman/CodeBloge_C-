@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{479A8338-86FA-41AD-AED2-D00D96336EDA}</ProjectGuid>
+    <ProjectGuid>{C6C51B8E-C0AB-4341-9A73-F4CB3910EA06}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Lesson_3</RootNamespace>
-    <AssemblyName>Lesson_3</AssemblyName>
+    <RootNamespace>Class_Constructor</RootNamespace>
+    <AssemblyName>Class_Constructor</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ship.cs" />
+    <Compile Include="WarShip.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
