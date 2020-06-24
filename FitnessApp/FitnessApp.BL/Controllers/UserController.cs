@@ -24,8 +24,11 @@ namespace FitnessApp.BL.Controllers
         /// Создание нового контроллера пользователя.
         /// </summary>
         /// <param name="user"> Пользователь. </param>
-        public UserController(User user)
+        public UserController(string name, string nameGender, DateTime birthDate, double weight, double height)
         {
+            var gender = new Gender(nameGender);
+            var user = new User(name, gender, birthDate, weight, height);
+
             User = user ?? throw new ArgumentNullException("Пользователь не может быть равен NULL.", nameof(user));
         }
 
