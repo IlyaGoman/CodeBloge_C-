@@ -37,11 +37,11 @@ namespace FitnessApp.CMD
             var birthDate = DateTime.Parse(Console.ReadLine());
 
             Console.WriteLine();
-            Console.Write("Введите вес пользователя: ");
+            Console.Write("Введите вес пользователя(кг): ");
             var weight = double.Parse(Console.ReadLine());
 
             Console.WriteLine();
-            Console.Write("Введите рост пользователя: ");
+            Console.Write("Введите рост пользователя(см): ");
             var height = double.Parse(Console.ReadLine());
 
             var userController = new UserController(name, gender, birthDate, weight, height);
