@@ -33,7 +33,7 @@ namespace FitnessApp.BL.Controllers
         /// </summary>
         private void Save()
         {
-            Save<Food>("foods.bin", Foods);
+            Save("foods.bin", Foods);
         }
 
     }

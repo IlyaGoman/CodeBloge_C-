@@ -41,7 +41,7 @@ namespace FitnessApp.BL.Controllers
             if (string.IsNullOrWhiteSpace(userName))
                 throw new ArgumentNullException("Имя пользователя не может быть пустым.", nameof(userName));
 
-            Users = GetUsersData();
+            Users = Load<User>("users.bin");
 
             CurrentUser = Users.SingleOrDefault(x=>x.Name == userName);
             if(CurrentUser == null)
