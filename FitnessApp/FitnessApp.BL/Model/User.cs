@@ -38,12 +38,12 @@ namespace FitnessApp.BL.Model
 
         public User(string userName)
         {
-            if (string.IsNullOrWhiteSpace(name))
+            if (string.IsNullOrWhiteSpace(userName))
             {
-                throw new ArgumentNullException("Имя не может быть пустым.", nameof(name));
+                throw new ArgumentNullException("Имя не может быть пустым.", nameof(userName));
             }
 
-            Name=userName
+            Name = userName;
         }
         /// <summary>
         /// Создание нового пользователя.

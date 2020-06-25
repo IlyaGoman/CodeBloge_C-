@@ -55,6 +55,7 @@ namespace FitnessApp.BL.Controllers
             var user = new User(name, gender, birthDate, weight, height);
 
             Users.Add(user);
+            Save();
         }
 
         /// <summary>
