@@ -1,6 +1,8 @@
 ﻿using FitnessApp.BL.Controllers;
+using FitnessApp.BL.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,24 +26,11 @@ namespace FitnessApp.CMD
                 Console.Write("Введите пол пользователя: ");
                 var gender = Console.ReadLine();
 
-                // TODO: Добавить проверки
-                Console.WriteLine();
-                DateTime birthDate;
-                do
-                {
-                    Console.Write("Введите дату рождения пользователя (dd.MM.yyyy): ");
-                }
-                while (!DateTime.TryParse(Console.ReadLine(), out birthDate));
+                var birthDate = ParseInput<DateTime>("Введите дату рождения пользователя (dd.MM.yyyy): ");
 
-                Console.WriteLine(birthDate);
+                var weight = ParseInput<double>("Введите вес пользователя(кг): ");
 
-                Console.WriteLine();
-                Console.Write("Введите вес пользователя(кг): ");
-                var weight = double.Parse(Console.ReadLine());
-
-                Console.WriteLine();
-                Console.Write("Введите рост пользователя(см): ");
-                var height = double.Parse(Console.ReadLine());
+                var height = ParseInput<double>("Введите рост пользователя(см): ");
 
                 userController.SetUserData(gender, birthDate, weight, height);
             }
@@ -50,13 +39,27 @@ namespace FitnessApp.CMD
             Console.ReadLine();
         }
 
+        private static T ParseInput<T>(string message)
+        {
+            T result;
+            Console.WriteLine();
+            Console.Write(message);
+            while (!Helper.TryParse<T>(Console.ReadLine(), out result))
+            {
+                Console.WriteLine("Неверный формат ввода!");
+                Console.Write(message);
+            }
+            
+
+            return result;
+        }
+
         //public static void CreateUser(string name)
         //{
         //    Console.WriteLine();
         //    Console.Write("Введите пол пользователя: ");
         //    var gender = Console.ReadLine();
 
-        //    // TODO: Добавить проверки
         //    Console.WriteLine();
         //    Console.Write("Введите дату рождения пользователя: ");
         //    var birthDate = DateTime.Parse(Console.ReadLine());

@@ -66,6 +66,13 @@ namespace FitnessApp.BL.Controllers
             Save();
         }
 
+        /// <summary>
+        /// Запрашиваем и сохраняем информацию о новом пользователе.
+        /// </summary>
+        /// <param name="genderName"></param>
+        /// <param name="birthDate"></param>
+        /// <param name="weight"></param>
+        /// <param name="height"></param>
         public void SetUserData(string genderName, DateTime birthDate, double weight = 1, double height=1)
         {
             CurrentUser.Gender = new Gender(genderName);
