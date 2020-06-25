@@ -45,8 +45,12 @@ namespace FitnessApp.BL.Controllers
             {
                 Foods.Add(food);
                 Eating.Add(food, weight);
-                Save();
             }
+            else
+            {
+                Eating.Add(food, weight);
+            }
+            Save();
         }
 
         /// <summary>
