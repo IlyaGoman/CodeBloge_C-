@@ -15,7 +15,7 @@ namespace FitnessApp.BL.Controllers
     /// </summary>
     public class UserController : ControllerBase
     {
-        private const string USERS_FILE_PATH = "users.bin";
+        private const string USERS_FILE_NAME = "users.bin";
 
         #region Свойства
         /// <summary>
@@ -90,7 +90,7 @@ namespace FitnessApp.BL.Controllers
         /// </summary>
         private void Save()
         {
-            Save<User>(USERS_FILE_PATH, Users);
+            Save<User>(USERS_FILE_NAME, Users);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace FitnessApp.BL.Controllers
         /// <returns> Пользователь. </returns>
         public List<User> GetAllUsers()
         {
-            return Load<User>(USERS_FILE_PATH);
+            return Load<User>(USERS_FILE_NAME);
         }
     }
 }

@@ -8,8 +8,8 @@ namespace FitnessApp.BL.Controllers
 {
     public class EatingController : ControllerBase
     {
-        private const string EATINGS_FILE_PATH = "eatings.bin";
-        private const string FOODS_FILE_PATH = "foods.bin";
+        private const string EATINGS_FILE_NAME = "eatings.bin";
+        private const string FOODS_FILE_NAME = "foods.bin";
         /// <summary>
         /// Пользователь
         /// </summary>
@@ -19,6 +19,7 @@ namespace FitnessApp.BL.Controllers
         public EatingController(User user)
         {
             this.user = user ?? throw new ArgumentNullException("Не может отсутствовать пользователь.", nameof(user));
+            Foods = GetAllFoods();
         }
 
         /// <summary>
@@ -27,7 +28,7 @@ namespace FitnessApp.BL.Controllers
         /// <returns></returns>
         private List<Food> GetAllFoods()
         {
-            return Load<Food>(FOODS_FILE_PATH);
+            return Load<Food>(FOODS_FILE_NAME);
         }
 
         /// <summary>
@@ -35,7 +36,7 @@ namespace FitnessApp.BL.Controllers
         /// </summary>
         private void Save()
         {
-            Save(FOODS_FILE_PATH, Foods);
+            Save(FOODS_FILE_NAME, Foods);
         }
 
     }
