@@ -117,7 +117,6 @@ namespace FitnessApp.BL.Controllers
                 catch
                 {
 
-
                 }
             }
 
