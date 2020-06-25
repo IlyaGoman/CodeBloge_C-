@@ -15,6 +15,8 @@ namespace FitnessApp.BL.Controllers
     /// </summary>
     public class UserController : ControllerBase
     {
+        private const string USERS_FILE_PATH = "users.bin";
+
         #region Свойства
         /// <summary>
         /// Список пользователей приложения.
@@ -41,7 +43,7 @@ namespace FitnessApp.BL.Controllers
             if (string.IsNullOrWhiteSpace(userName))
                 throw new ArgumentNullException("Имя пользователя не может быть пустым.", nameof(userName));
 
-            Users = Load<User>("users.bin");
+            Users = GetAllUsers();
 
             CurrentUser = Users.SingleOrDefault(x=>x.Name == userName);
             if(CurrentUser == null)
@@ -88,16 +90,16 @@ namespace FitnessApp.BL.Controllers
         /// </summary>
         private void Save()
         {
-            Save<User>("users.bin", Users);
+            Save<User>(USERS_FILE_PATH, Users);
         }
 
         /// <summary>
         /// Получаем список пользователей из файла.
         /// </summary>
         /// <returns> Пользователь. </returns>
-        public List<User> Load()
+        public List<User> GetAllUsers()
         {
-            return Load<User>("users.bin");
+            return Load<User>(USERS_FILE_PATH);
         }
     }
 }
