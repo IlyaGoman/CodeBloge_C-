@@ -17,7 +17,7 @@ namespace FitnessApp.BL.Model
         /// <summary>
         /// Пол пользователя.
         /// </summary>
-        public Gender Gender { get; }
+        public Gender Gender { get; set; }
 
         /// <summary>
         /// Дата рождения.
@@ -49,19 +49,15 @@ namespace FitnessApp.BL.Model
             }
 
             Name = userName;
-            // Default value
-            BirthDate = DateTime.Parse("01.01.2000");
-            Weight = 1;
-            Height = 1;
         }
         /// <summary>
         /// Создание нового пользователя.
         /// </summary>
-        /// <param name="userName">Имя</param>
-        /// <param name="gender">Пол</param>
-        /// <param name="birthDate">Дата рождения</param>
-        /// <param name="weight">Вес</param>
-        /// <param name="height">Рост</param>
+        /// <param name="userName"> Имя </param>
+        /// <param name="gender"> Пол </param>
+        /// <param name="birthDate"> Дата рождения </param>
+        /// <param name="weight"> Вес </param>
+        /// <param name="height"> Рост </param>
         public User(string userName, Gender gender, DateTime birthDate, double weight, double height)
         {
             #region Проверка входных параметров

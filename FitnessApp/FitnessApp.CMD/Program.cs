@@ -14,12 +14,9 @@ namespace FitnessApp.CMD
             Console.WriteLine("Вас приветствует приложение FitnessApp");
             
             Console.Write("Введите имя пользователя: ");
-
             var userNme = Console.ReadLine();
 
             var userController = new UserController(userNme);
-
-            Console.WriteLine(userController.CurrentUser);
 
             if(userController.IsNewUser)
             {
@@ -29,8 +26,14 @@ namespace FitnessApp.CMD
 
                 // TODO: Добавить проверки
                 Console.WriteLine();
-                Console.Write("Введите дату рождения пользователя: ");
-                var birthDate = DateTime.Parse(Console.ReadLine());
+                DateTime birthDate;
+                do
+                {
+                    Console.Write("Введите дату рождения пользователя (dd.MM.yyyy): ");
+                }
+                while (!DateTime.TryParse(Console.ReadLine(), out birthDate));
+
+                Console.WriteLine(birthDate);
 
                 Console.WriteLine();
                 Console.Write("Введите вес пользователя(кг): ");
@@ -40,8 +43,10 @@ namespace FitnessApp.CMD
                 Console.Write("Введите рост пользователя(см): ");
                 var height = double.Parse(Console.ReadLine());
 
+                userController.SetUserData(gender, birthDate, weight, height);
             }
 
+            Console.WriteLine(userController.CurrentUser);
             Console.ReadLine();
         }
 

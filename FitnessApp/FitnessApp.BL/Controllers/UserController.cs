@@ -15,6 +15,7 @@ namespace FitnessApp.BL.Controllers
     /// </summary>
     public class UserController
     {
+        #region Свойства
         /// <summary>
         /// Список пользователей приложения.
         /// </summary>
@@ -28,7 +29,8 @@ namespace FitnessApp.BL.Controllers
         /// <summary>
         /// Флаг, указывающий новый ли это пользователь.
         /// </summary>
-        public bool IsNewUser { get; } = false;
+        public bool IsNewUser { get; } = false; 
+        #endregion
 
         /// <summary>
         /// Создание нового контроллера пользователя.
@@ -61,6 +63,16 @@ namespace FitnessApp.BL.Controllers
             var user = new User(name, gender, birthDate, weight, height);
 
             Users.Add(user);
+            Save();
+        }
+
+        public void SetUserData(string genderName, DateTime birthDate, double weight = 1, double height=1)
+        {
+            CurrentUser.Gender = new Gender(genderName);
+            CurrentUser.BirthDate = birthDate;
+            CurrentUser.Weight = weight;
+            CurrentUser.Height = height;
+
             Save();
         }
 
