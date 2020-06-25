@@ -16,9 +16,28 @@ namespace FitnessApp.BL.Controllers
     public class UserController
     {
         /// <summary>
-        /// Пользователь.
+        /// Список пользователей приложения.
         /// </summary>
-        public User User { get; }
+        public List<User> Users { get; }
+
+        /// <summary>
+        /// Текущий пользователь.
+        /// </summary>
+        public User CurrentUser { get; }
+
+        /// <summary>
+        /// Создание нового контроллера пользователя.
+        /// </summary>
+        /// <param name="user"> Пользователь. </param>
+        public UserController(string userName)
+        {
+            if (string.IsNullOrWhiteSpace(userName))
+                throw new ArgumentNullException("Имя пользователя не может быть пустым.", nameof(userName));
+
+            Users = GetUsersData();
+
+            CurrentUser = Users.SingleOrDefault(x=>x.Name == userName);
+        }
 
         /// <summary>
         /// Создание нового контроллера пользователя.
@@ -29,7 +48,7 @@ namespace FitnessApp.BL.Controllers
             var gender = new Gender(nameGender);
             var user = new User(name, gender, birthDate, weight, height);
 
-            User = user ?? throw new ArgumentNullException("Пользователь не может быть равен NULL.", nameof(user));
+            Users.Add(user ?? throw new ArgumentNullException("Пользователь не может быть равен NULL.", nameof(user)));
         }
 
         /// <summary>
@@ -41,22 +60,24 @@ namespace FitnessApp.BL.Controllers
 
             using (var file = new FileStream("users.bin", FileMode.OpenOrCreate))
             {
-                binFormatter.Serialize(file, User);
+                binFormatter.Serialize(file, Users);
             }
         }
 
         /// <summary>
-        /// Получить пользователя из файла.
+        /// Получаем список пользователей из файла.
         /// </summary>
         /// <returns> Пользователь. </returns>
-        public UserController()
+        private List<User> GetUsersData()
         {
             var binFormatter = new BinaryFormatter();
 
             using (var file = new FileStream("users.bin", FileMode.Open))
             {
-                User = binFormatter.Deserialize(file) as User;
+                return binFormatter.Deserialize(file) as List<User>;
             }
+
+            return new List<User>();
 
             // TODO: Что делать, если пользователя не прочитали?
         }
