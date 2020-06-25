@@ -13,7 +13,7 @@ namespace FitnessApp.BL.Controllers
     /// <summary>
     /// Контроллер пользователя.
     /// </summary>
-    public class UserController
+    public class UserController : ControllerBase
     {
         #region Свойства
         /// <summary>
@@ -88,31 +88,16 @@ namespace FitnessApp.BL.Controllers
         /// </summary>
         private void Save()
         {
-            var binFormatter = new BinaryFormatter();
-
-            using (var file = new FileStream("users.bin", FileMode.OpenOrCreate))
-            {
-                binFormatter.Serialize(file, Users);
-            }
+            Save<User>("users.bin", Users);
         }
 
         /// <summary>
         /// Получаем список пользователей из файла.
         /// </summary>
         /// <returns> Пользователь. </returns>
-        public List<User> GetUsersData()
+        public List<User> Load()
         {
-            var binFormatter = new BinaryFormatter();
-
-            using (var file = new FileStream("users.bin", FileMode.OpenOrCreate))
-            {
-                if (file.Length>0 && binFormatter.Deserialize(file) is List<User> users)
-                {
-                    return users;
-                }
-            }
-
-            return new List<User>();
+            return Load<User>("users.bin");
         }
     }
 }
