@@ -20,7 +20,28 @@ namespace FitnessApp.CMD
             var userController = new UserController(userNme);
 
             Console.WriteLine(userController.CurrentUser);
-            
+
+            if(userController.IsNewUser)
+            {
+                Console.WriteLine();
+                Console.Write("Введите пол пользователя: ");
+                var gender = Console.ReadLine();
+
+                // TODO: Добавить проверки
+                Console.WriteLine();
+                Console.Write("Введите дату рождения пользователя: ");
+                var birthDate = DateTime.Parse(Console.ReadLine());
+
+                Console.WriteLine();
+                Console.Write("Введите вес пользователя(кг): ");
+                var weight = double.Parse(Console.ReadLine());
+
+                Console.WriteLine();
+                Console.Write("Введите рост пользователя(см): ");
+                var height = double.Parse(Console.ReadLine());
+
+            }
+
             Console.ReadLine();
         }
 

@@ -49,6 +49,7 @@ namespace FitnessApp.BL.Model
             }
 
             Name = userName;
+            // Default value
             BirthDate = DateTime.Parse("01.01.2000");
             Weight = 1;
             Height = 1;

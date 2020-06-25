@@ -26,6 +26,11 @@ namespace FitnessApp.BL.Controllers
         public User CurrentUser { get; }
 
         /// <summary>
+        /// Флаг, указывающий новый ли это пользователь.
+        /// </summary>
+        public bool IsNewUser { get; } = false;
+
+        /// <summary>
         /// Создание нового контроллера пользователя.
         /// </summary>
         /// <param name="user"> Пользователь. </param>
@@ -41,6 +46,7 @@ namespace FitnessApp.BL.Controllers
             {
                 CurrentUser = new User(userName);
                 Users.Add(CurrentUser);
+                IsNewUser = true;
                 Save();
             }
         }
