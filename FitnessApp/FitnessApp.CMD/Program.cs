@@ -49,7 +49,6 @@ namespace FitnessApp.CMD
                 Console.WriteLine("Неверный формат ввода!");
                 Console.Write(message);
             }
-            
 
             return result;
         }
