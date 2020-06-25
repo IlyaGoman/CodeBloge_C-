@@ -37,6 +37,12 @@ namespace FitnessApp.BL.Controllers
             Users = GetUsersData();
 
             CurrentUser = Users.SingleOrDefault(x=>x.Name == userName);
+            if(CurrentUser == null)
+            {
+                CurrentUser = new User(userName);
+                Users.Add(CurrentUser);
+                Save();
+            }
         }
 
         /// <summary>
@@ -48,13 +54,13 @@ namespace FitnessApp.BL.Controllers
             var gender = new Gender(nameGender);
             var user = new User(name, gender, birthDate, weight, height);
 
-            Users.Add(user ?? throw new ArgumentNullException("Пользователь не может быть равен NULL.", nameof(user)));
+            Users.Add(user);
         }
 
         /// <summary>
         /// Сохранение пользователя в файл.
         /// </summary>
-        public void Save()
+        private void Save()
         {
             var binFormatter = new BinaryFormatter();
 
@@ -74,12 +80,12 @@ namespace FitnessApp.BL.Controllers
 
             using (var file = new FileStream("users.bin", FileMode.Open))
             {
-                return binFormatter.Deserialize(file) as List<User>;
+                var users = binFormatter.Deserialize(file) as List<User>;
+                if (users != null)
+                    return users;
             }
 
             return new List<User>();
-
-            // TODO: Что делать, если пользователя не прочитали?
         }
     }
 }

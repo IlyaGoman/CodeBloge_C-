@@ -18,11 +18,6 @@ namespace FitnessApp.CMD
             var userNme = Console.ReadLine();
 
             var userController = new UserController(userNme);
-
-            if (!IsExistsUser(userNme))
-            {
-                CreateUser(userNme);
-            }
             
             Console.ReadLine();
         }
@@ -51,18 +46,18 @@ namespace FitnessApp.CMD
 
         }
 
-        public static bool IsExistsUser(string name)
-        {
-            var userController = new UserController();
+        //public static bool IsExistsUser(string name)
+        //{
+        //    var userController = new UserController();
 
-            if (userController.User.Name == name)
-            {
-                Console.WriteLine("Добро пожаловать.Вы вошли как:");
-                Console.WriteLine(userController.User);
-                return true;
-            }
+        //    if (userController.User.Name == name)
+        //    {
+        //        Console.WriteLine("Добро пожаловать.Вы вошли как:");
+        //        Console.WriteLine(userController.User);
+        //        return true;
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
     }
 }
