@@ -14,7 +14,7 @@ namespace FitnessApp.CMD
         static void Main(string[] args)
         {
             Console.WriteLine("Вас приветствует приложение FitnessApp");
-            
+
             Console.Write("Введите имя пользователя: ");
             var userNme = Console.ReadLine();
 

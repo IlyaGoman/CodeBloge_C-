@@ -29,18 +29,17 @@ namespace FitnessApp.BL.Controllers.Tests
             var userName = Guid.NewGuid().ToString();
             var gender = "female";
             var birthDate = DateTime.Now.AddYears(-18);
-            
             var controllerActual = new UserController(userName);
 
             controllerActual.SetUserData(gender, birthDate);
 
             var controllerExpected = new UserController(userName);
 
-            Assert.AreEqual(userName, controllerActual.CurrentUser.Name);
-            Assert.AreEqual(gender, controllerActual.CurrentUser.Gender.Name);
-            Assert.AreEqual(birthDate, controllerActual.CurrentUser.BirthDate);
-            Assert.AreEqual(1, controllerActual.CurrentUser.Weight);
-            Assert.AreEqual(1, controllerActual.CurrentUser.Height);
+            Assert.AreEqual(userName, controllerExpected.CurrentUser.Name);
+            Assert.AreEqual(gender, controllerExpected.CurrentUser.Gender.Name);
+            Assert.AreEqual(birthDate, controllerExpected.CurrentUser.BirthDate);
+            Assert.AreEqual(1, controllerExpected.CurrentUser.Weight);
+            Assert.AreEqual(1, controllerExpected.CurrentUser.Height);
 
         }
 

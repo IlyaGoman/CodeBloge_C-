@@ -8,6 +8,10 @@ namespace FitnessApp.BL.Model
     [Serializable]
     public class User
     {
+        private Gender gender;
+        private DateTime birthDate;
+        private double weight;
+        private double height;
         #region Свойства
         /// <summary>
         /// Имя пользователя.
@@ -18,27 +22,74 @@ namespace FitnessApp.BL.Model
         /// <summary>
         /// Пол пользователя.
         /// </summary>
-        public Gender Gender { get; set; }
+        public Gender Gender
+        {
+            get => gender;
+            set => gender = value ?? throw new ArgumentNullException("Пол не может быть пустым.", nameof(gender));
+        }
 
         /// <summary>
         /// Дата рождения.
         /// </summary>
-        public DateTime BirthDate { get; set; }
+        public DateTime BirthDate
+        {
+            get => birthDate;
+            set
+            {
+                if (value <= DateTime.Parse("01.01.1900") || value >= DateTime.Now)
+                {
+                    throw new ArgumentException("Дата рождения не может быть меньше 01.01.1900.", nameof(birthDate));
+                }
+
+                birthDate = value;
+            }
+        }
 
         /// <summary>
         /// Вес пользователя.
         /// </summary>
-        public double Weight { get; set; }
+        public double Weight
+        {
+            get => weight;
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Вес не может быть меньше 0.", nameof(weight));
+                }
+
+                weight = value;
+            }
+        }
 
         /// <summary>
         /// Рост пользователя.
         /// </summary>
-        public double Height { get; set; }
+        public double Height 
+        { 
+            get => height;
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Рост не может быть меньше 0.", nameof(height));
+                }
+
+                height = value;
+            }
+        }
 
         /// <summary>
         /// Вычисляет возраст пользователя.
         /// </summary>
-        public int Age => DateTime.Now.Year - BirthDate.Year;
+        public int Age
+        {
+            get
+            {
+                var diffYear = DateTime.Now.Year - BirthDate.Year;
+                return BirthDate.AddYears(diffYear) < DateTime.Now ? diffYear - 1 : diffYear;
+            }
+        }
 
         #endregion
 
@@ -67,20 +118,20 @@ namespace FitnessApp.BL.Model
                 throw new ArgumentNullException("Имя не может быть пустым.", nameof(userName));
             }
 
-            if (birthDate <= DateTime.Parse("01.01.1900") || birthDate>=DateTime.Now)
-            {
-                throw new ArgumentException("Дата рождения не может быть меньше 01.01.1900.", nameof(birthDate));
-            }
+            //if (birthDate <= DateTime.Parse("01.01.1900") || birthDate >= DateTime.Now)
+            //{
+            //    throw new ArgumentException("Дата рождения не может быть меньше 01.01.1900.", nameof(birthDate));
+            //}
 
-            if (weight<=0)
-            {
-                throw new ArgumentException("Вес не может быть меньше 0.", nameof(weight));
-            }
+            //if (weight <= 0)
+            //{
+            //    throw new ArgumentException("Вес не может быть меньше 0.", nameof(weight));
+            //}
 
-            if (height<=0)
-            {
-                throw new ArgumentException("Рост не может быть меньше 0.", nameof(height));
-            }
+            //if (height <= 0)
+            //{
+            //    throw new ArgumentException("Рост не может быть меньше 0.", nameof(height));
+            //}
             #endregion
 
             Name = userName;
