@@ -100,25 +100,25 @@ namespace FitnessApp.BL.Controllers
         /// Получаем список пользователей из файла.
         /// </summary>
         /// <returns> Пользователь. </returns>
-        private List<User> GetUsersData()
+        public List<User> GetUsersData()
         {
             var binFormatter = new BinaryFormatter();
 
             using (var file = new FileStream("users.bin", FileMode.OpenOrCreate))
             {
                 // TODO: Если файл с данными не существует, то вылетает ArgumentNullException на пустой поток для Deserialize.
-                //try
-                //{
-                if (binFormatter.Deserialize(file) is List<User> users)
+                try
+                {
+                    if (binFormatter.Deserialize(file) is List<User> users)
                 {
                     return users;
                 }
-                //}
-                //    catch (Exception)
-                //    {
+                }
+                catch
+                {
 
 
-                //    }
+                }
             }
 
             return new List<User>();

@@ -14,6 +14,7 @@ namespace FitnessApp.BL.Model
         /// </summary>
         public string Name { get; }
 
+        // TODO: Реализовать get|set для каждого свойства, чтобы были проверки.
         /// <summary>
         /// Пол пользователя.
         /// </summary>
