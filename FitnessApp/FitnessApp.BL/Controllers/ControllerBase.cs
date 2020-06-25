@@ -16,7 +16,7 @@ namespace FitnessApp.BL.Controllers
         /// <typeparam name="T"> Тип объекта сохранения. </typeparam>
         /// <param name="fileName"> Путь к файлу. </param>
         /// <param name="obj"> Список, который необходимо сохранить. </param>
-        protected void Save<T>(string fileName, List<T> obj)
+        protected void Save<T>(string fileName, T obj)
         {
             var binFormatter = new BinaryFormatter();
 
@@ -32,19 +32,19 @@ namespace FitnessApp.BL.Controllers
         /// <typeparam name="T"> Тип получаемых объектов. </typeparam>
         /// <param name="fileName"> Пусть к файлу. </param>
         /// <returns> Возвращает List<T> </returns>
-        protected List<T> Load<T>(string fileName)
+        protected T Load<T>(string fileName)
         {
             var binFormatter = new BinaryFormatter();
 
             using (var file = new FileStream(fileName, FileMode.OpenOrCreate))
             {
-                if (file.Length > 0 && binFormatter.Deserialize(file) is List<T> result)
+                if (file.Length > 0 && binFormatter.Deserialize(file) is T result)
                 {
                     return result;
                 }
             }
 
-            return new List<T>();
+            return default(T);
         }
     }
 }

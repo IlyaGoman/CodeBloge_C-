@@ -90,7 +90,7 @@ namespace FitnessApp.BL.Controllers
         /// </summary>
         private void Save()
         {
-            Save<User>(USERS_FILE_NAME, Users);
+            Save(USERS_FILE_NAME, Users);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace FitnessApp.BL.Controllers
         /// <returns> Пользователь. </returns>
         public List<User> GetAllUsers()
         {
-            return Load<User>(USERS_FILE_NAME);
+            return Load<List<User>>(USERS_FILE_NAME) ?? new List<User>();
         }
     }
 }

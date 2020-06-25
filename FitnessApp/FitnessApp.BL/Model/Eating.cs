@@ -20,7 +20,7 @@ namespace FitnessApp.BL.Model
         public Dictionary<Food, double> Foods { get; }
 
         /// <summary>
-        /// Пользователь? который принимал пищу.
+        /// Пользователь, который принимал пищу.
         /// </summary>
         public User User { get; }
 
