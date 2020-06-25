@@ -12,18 +12,6 @@ namespace FitnessApp.BL.Controllers.Tests
     public class UserControllerTests
     {
         [TestMethod()]
-        public void UserControllerTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void UserControllerTest1()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
         public void SetUserDataTest()
         {
             var userName = Guid.NewGuid().ToString();

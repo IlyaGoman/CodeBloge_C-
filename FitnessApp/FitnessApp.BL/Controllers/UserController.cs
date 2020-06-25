@@ -106,17 +106,9 @@ namespace FitnessApp.BL.Controllers
 
             using (var file = new FileStream("users.bin", FileMode.OpenOrCreate))
             {
-                // TODO: Если файл с данными не существует, то вылетает ArgumentNullException на пустой поток для Deserialize.
-                try
-                {
-                    if (binFormatter.Deserialize(file) is List<User> users)
+                if (file.Length>0 && binFormatter.Deserialize(file) is List<User> users)
                 {
                     return users;
-                }
-                }
-                catch
-                {
-
                 }
             }
 

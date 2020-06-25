@@ -12,13 +12,13 @@ namespace FitnessApp.BL.Model
         private DateTime birthDate;
         private double weight;
         private double height;
+
         #region Свойства
         /// <summary>
         /// Имя пользователя.
         /// </summary>
         public string Name { get; }
 
-        // TODO: Реализовать get|set для каждого свойства, чтобы были проверки.
         /// <summary>
         /// Пол пользователя.
         /// </summary>
@@ -102,6 +102,7 @@ namespace FitnessApp.BL.Model
 
             Name = userName;
         }
+
         /// <summary>
         /// Создание нового пользователя.
         /// </summary>
@@ -117,21 +118,6 @@ namespace FitnessApp.BL.Model
             {
                 throw new ArgumentNullException("Имя не может быть пустым.", nameof(userName));
             }
-
-            //if (birthDate <= DateTime.Parse("01.01.1900") || birthDate >= DateTime.Now)
-            //{
-            //    throw new ArgumentException("Дата рождения не может быть меньше 01.01.1900.", nameof(birthDate));
-            //}
-
-            //if (weight <= 0)
-            //{
-            //    throw new ArgumentException("Вес не может быть меньше 0.", nameof(weight));
-            //}
-
-            //if (height <= 0)
-            //{
-            //    throw new ArgumentException("Рост не может быть меньше 0.", nameof(height));
-            //}
             #endregion
 
             Name = userName;
