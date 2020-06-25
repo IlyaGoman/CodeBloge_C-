@@ -8,6 +8,8 @@ namespace FitnessApp.BL.Controllers
 {
     public class EatingController : ControllerBase
     {
+        private const string EATINGS_FILE_PATH = "eatings.bin";
+        private const string FOODS_FILE_PATH = "foods.bin";
         /// <summary>
         /// Пользователь
         /// </summary>
@@ -23,9 +25,9 @@ namespace FitnessApp.BL.Controllers
         /// Получение списка продуктов
         /// </summary>
         /// <returns></returns>
-        private List<Food> Load()
+        private List<Food> GetAllFoods()
         {
-            return Load<Food>("foods.bin");
+            return Load<Food>(FOODS_FILE_PATH);
         }
 
         /// <summary>
@@ -33,7 +35,7 @@ namespace FitnessApp.BL.Controllers
         /// </summary>
         private void Save()
         {
-            Save("foods.bin", Foods);
+            Save(FOODS_FILE_PATH, Foods);
         }
 
     }
