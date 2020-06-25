@@ -15,11 +15,13 @@ namespace FitnessApp.CMD
             
             Console.Write("Введите имя пользователя: ");
 
-            var name = Console.ReadLine();
+            var userNme = Console.ReadLine();
 
-            if (!IsExistsUser(name))
+            var userController = new UserController(userNme);
+
+            if (!IsExistsUser(userNme))
             {
-                CreateUser(name);
+                CreateUser(userNme);
             }
             
             Console.ReadLine();

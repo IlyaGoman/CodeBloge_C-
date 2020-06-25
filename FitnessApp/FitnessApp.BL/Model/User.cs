@@ -35,20 +35,30 @@ namespace FitnessApp.BL.Model
         public double Height { get; set; }
 
         #endregion
+
+        public User(string userName)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException("Имя не может быть пустым.", nameof(name));
+            }
+
+            Name=userName
+        }
         /// <summary>
         /// Создание нового пользователя.
         /// </summary>
-        /// <param name="name">Имя</param>
+        /// <param name="userName">Имя</param>
         /// <param name="gender">Пол</param>
         /// <param name="birthDate">Дата рождения</param>
         /// <param name="weight">Вес</param>
         /// <param name="height">Рост</param>
-        public User(string name, Gender gender, DateTime birthDate, double weight, double height)
+        public User(string userName, Gender gender, DateTime birthDate, double weight, double height)
         {
             #region Проверка входных параметров
-            if (string.IsNullOrWhiteSpace(name))
+            if (string.IsNullOrWhiteSpace(userName))
             {
-                throw new ArgumentNullException("Имя не может быть пустым.", nameof(name));
+                throw new ArgumentNullException("Имя не может быть пустым.", nameof(userName));
             }
 
             if (birthDate <= DateTime.Parse("01.01.1900") || birthDate>=DateTime.Now)
@@ -67,7 +77,7 @@ namespace FitnessApp.BL.Model
             }
             #endregion
 
-            Name = name;
+            Name = userName;
             Gender = gender ?? throw new ArgumentNullException("Пол не может быть пустым.", nameof(gender));
             BirthDate = birthDate;
             Weight = weight;
