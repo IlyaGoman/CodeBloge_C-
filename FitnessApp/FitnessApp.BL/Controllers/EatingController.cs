@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace FitnessApp.BL.Controllers
 {
-    public class EatingController
+    public class EatingController : ControllerBase
     {
         /// <summary>
         /// Пользователь
@@ -23,29 +23,17 @@ namespace FitnessApp.BL.Controllers
         /// Получение списка продуктов
         /// </summary>
         /// <returns></returns>
-        private List<Food> GetAllFoods()
+        private List<Food> Load()
         {
-            var binFormatter = new BinaryFormatter();
-
-            using (var file = new FileStream("foods.bin", FileMode.OpenOrCreate))
-            {
-                if (file.Length > 0 && binFormatter.Deserialize(file) is List<Food> foods)
-                {
-                    return foods;
-                }
-            }
-
-            return new List<Food>();
+            return Load<Food>("foods.bin");
         }
 
+        /// <summary>
+        /// Сохранение списка продуктов
+        /// </summary>
         private void Save()
         {
-            var binFormatter = new BinaryFormatter();
-
-            using (var file = new FileStream("foods.bin", FileMode.OpenOrCreate))
-            {
-                binFormatter.Serialize(file, Foods);
-            }
+            Save<Food>("foods.bin", Foods);
         }
 
     }
