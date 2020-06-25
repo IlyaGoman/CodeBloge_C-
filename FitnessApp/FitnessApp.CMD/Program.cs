@@ -18,33 +18,35 @@ namespace FitnessApp.CMD
             var userNme = Console.ReadLine();
 
             var userController = new UserController(userNme);
+
+            Console.WriteLine(userController.CurrentUser);
             
             Console.ReadLine();
         }
 
-        public static void CreateUser(string name)
-        {
-            Console.WriteLine();
-            Console.Write("Введите пол пользователя: ");
-            var gender = Console.ReadLine();
+        //public static void CreateUser(string name)
+        //{
+        //    Console.WriteLine();
+        //    Console.Write("Введите пол пользователя: ");
+        //    var gender = Console.ReadLine();
 
-            // TODO: Добавить проверки
-            Console.WriteLine();
-            Console.Write("Введите дату рождения пользователя: ");
-            var birthDate = DateTime.Parse(Console.ReadLine());
+        //    // TODO: Добавить проверки
+        //    Console.WriteLine();
+        //    Console.Write("Введите дату рождения пользователя: ");
+        //    var birthDate = DateTime.Parse(Console.ReadLine());
 
-            Console.WriteLine();
-            Console.Write("Введите вес пользователя(кг): ");
-            var weight = double.Parse(Console.ReadLine());
+        //    Console.WriteLine();
+        //    Console.Write("Введите вес пользователя(кг): ");
+        //    var weight = double.Parse(Console.ReadLine());
 
-            Console.WriteLine();
-            Console.Write("Введите рост пользователя(см): ");
-            var height = double.Parse(Console.ReadLine());
+        //    Console.WriteLine();
+        //    Console.Write("Введите рост пользователя(см): ");
+        //    var height = double.Parse(Console.ReadLine());
 
-            var userController = new UserController(name, gender, birthDate, weight, height);
-            userController.Save();
+        //    var userController = new UserController(name, gender, birthDate, weight, height);
+        //    userController.Save();
 
-        }
+        //}
 
         //public static bool IsExistsUser(string name)
         //{

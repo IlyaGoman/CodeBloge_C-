@@ -34,6 +34,11 @@ namespace FitnessApp.BL.Model
         /// </summary>
         public double Height { get; set; }
 
+        /// <summary>
+        /// Вычисляет возраст пользователя.
+        /// </summary>
+        public int Age => DateTime.Now.Year - BirthDate.Year;
+
         #endregion
 
         public User(string userName)
@@ -44,6 +49,9 @@ namespace FitnessApp.BL.Model
             }
 
             Name = userName;
+            BirthDate = DateTime.Parse("01.01.2000");
+            Weight = 1;
+            Height = 1;
         }
         /// <summary>
         /// Создание нового пользователя.
@@ -86,7 +94,7 @@ namespace FitnessApp.BL.Model
 
         public override string ToString()
         {
-            return $"UserName: {Name}, gender: {Gender}, birthDate: {BirthDate}, weight: {Weight}kg, height: {Height}cm";
+            return $"UserName: {Name}, gender: {Gender}, age: {Age}, birthDate: {BirthDate}, weight: {Weight}kg, height: {Height}cm";
         }
     }
 }
