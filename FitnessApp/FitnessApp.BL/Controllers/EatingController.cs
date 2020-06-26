@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace FitnessApp.BL.Controllers
 {
+    [Serializable]
     public class EatingController : ControllerBase
     {
         private const string EATINGS_FILE_NAME = "eatings.bin";
@@ -24,18 +25,6 @@ namespace FitnessApp.BL.Controllers
             this.user = user ?? throw new ArgumentNullException("Не может отсутствовать пользователь.", nameof(user));
             Foods = GetAllFoods();
             Eating = GetEating();
-        }
-
-        public bool AddEating(string foodName, double weight)
-        {
-            var food = Foods.SingleOrDefault(x=>x.Name == foodName);
-            if(Eating != null)
-            {
-                Eating.Add(food, weight);
-                Save();
-                return true;
-            }
-            return false;
         }
 
         public void Add(Food food, double weight)

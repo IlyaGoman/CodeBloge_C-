@@ -38,10 +38,14 @@ namespace FitnessApp.BL.Controllers
 
             using (var file = new FileStream(fileName, FileMode.OpenOrCreate))
             {
-                if (file.Length > 0 && binFormatter.Deserialize(file) is T result)
+                try
                 {
-                    return result;
+                    if (file.Length > 0 && binFormatter.Deserialize(file) is T result)
+                    {
+                        return result;
+                    }
                 }
+                catch { }
             }
 
             return default(T);

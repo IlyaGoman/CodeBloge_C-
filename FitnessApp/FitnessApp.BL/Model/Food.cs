@@ -5,6 +5,7 @@ namespace FitnessApp.BL.Model
     /// <summary>
     /// Продукт
     /// </summary>
+    [Serializable]
     public class Food
     {
         /// <summary>
