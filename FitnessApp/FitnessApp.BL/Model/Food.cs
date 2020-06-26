@@ -46,7 +46,7 @@ namespace FitnessApp.BL.Model
             }
 
             // TODO: Проверки
-            Name = Name;
+            Name = name;
             Proteins = proteins / 100.0;
             Fats = fats / 100.0;
             Carbohydrates = carbohydrates / 100.0;

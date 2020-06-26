@@ -40,7 +40,7 @@ namespace FitnessApp.BL.Model
         /// <param name="weight"> Вес продукта </param>
         public void Add(Food food, double weight)
         {
-            var product = Foods.Keys.FirstOrDefault(f => f.Name.Equals(food.Name));
+            var product = Foods.Keys.FirstOrDefault(f => f.Name == food.Name));
             if(product == null)
             {
                 Foods.Add(food, weight);
