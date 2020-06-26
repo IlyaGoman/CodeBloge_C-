@@ -27,7 +27,6 @@ namespace FitnessApp.BL.Model
         /// Углеводы
         /// </summary>
         public double Carbohydrates { get; }
-        public double Calories1 { get; }
 
         /// <summary>
         /// Калории за 100гр продукта

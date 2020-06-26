@@ -36,7 +36,24 @@ namespace FitnessApp.CMD
             }
 
             Console.WriteLine(userController.CurrentUser);
+
+            var eatingController = new EatingController(userController.CurrentUser);
+
+
+
             Console.ReadLine();
+        }
+
+        private static void FillEating()
+        {
+            Console.WriteLine("Введите наименование продукта: ");
+            var foodName = Console.ReadLine();
+
+            var calories = ParseInput<double>("Введите калорийность продукта: ");
+            var proteins = ParseInput<double>("Введите калорийность продукта: ");
+            var calories = ParseInput<double>("Введите калорийность продукта: ");
+            var calories = ParseInput<double>("Введите калорийность продукта: ");
+            var calories = ParseInput<double>("Введите калорийность продукта: ");
         }
 
         private static T ParseInput<T>(string message)
