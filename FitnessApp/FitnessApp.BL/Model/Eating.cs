@@ -11,7 +11,7 @@ namespace FitnessApp.BL.Model
     public class Eating
     {
         /// <summary>
-        /// Время приема пищи
+        /// Время приема пищи 
         /// </summary>
         public DateTime Moment { get; }
 
