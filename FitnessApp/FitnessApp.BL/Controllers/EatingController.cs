@@ -85,5 +85,9 @@ namespace FitnessApp.BL.Controllers
             base.Save(EATINGS_FILE_NAME, Eating);
         }
 
+        public override string ToString()
+        {
+            return $"В {Eating.Moment} пользователь {user.Name} съел {Foods.Count} продуктов.";
+        }
     }
 }

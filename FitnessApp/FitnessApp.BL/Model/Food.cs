@@ -31,7 +31,7 @@ namespace FitnessApp.BL.Model
         /// <summary>
         /// Калории за 100гр продукта
         /// </summary>
-        public int Calories { get; }
+        public double Calories { get; }
 
         public Food(string name) : this(name, 0, 0, 0, 0)
         {
@@ -49,7 +49,12 @@ namespace FitnessApp.BL.Model
             Proteins = proteins / 100.0;
             Fats = fats / 100.0;
             Carbohydrates = carbohydrates / 100.0;
-            Calories1 = calories / 100.0;
+            Calories = calories / 100.0;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

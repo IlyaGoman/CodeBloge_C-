@@ -39,21 +39,49 @@ namespace FitnessApp.CMD
 
             var eatingController = new EatingController(userController.CurrentUser);
 
+            Console.WriteLine("Выберете действие:");
+            Console.WriteLine("E - ввести прием пищи");
+            var inputKey = Console.ReadKey();
+            Console.WriteLine();
+
+            switch (inputKey.Key)
+            { 
+                case ConsoleKey.E:
+                    {
+                        var weightFood = 0.0;
+                        var food = FillEating(out weightFood);
+                        eatingController.Add(food, weightFood);
+                        break;
+                    }
+                default:
+                    Console.WriteLine("Введена неверная команда!");
+                    break;
+            }
+
+            Console.WriteLine();
+            Console.WriteLine(eatingController.ToString());
+            foreach (var food in eatingController.Eating.Foods)
+            {
+                Console.WriteLine($"{food.Key} - {food.Value}");
+            }
 
 
             Console.ReadLine();
         }
 
-        private static void FillEating()
+        private static Food FillEating(out double weightFood)
         {
             Console.WriteLine("Введите наименование продукта: ");
             var foodName = Console.ReadLine();
 
-            var calories = ParseInput<double>("Введите калорийность продукта: ");
-            var proteins = ParseInput<double>("Введите калорийность продукта: ");
-            var calories = ParseInput<double>("Введите калорийность продукта: ");
-            var calories = ParseInput<double>("Введите калорийность продукта: ");
-            var calories = ParseInput<double>("Введите калорийность продукта: ");
+            var calories = ParseInput<double>("Введите калорийность продукта(кКал): ");
+            var proteins = ParseInput<double>("Введите содержание белков(г): ");
+            var fats = ParseInput<double>("Введите содержание жиров(г): ");
+            var carbohydrates = ParseInput<double>("Введите содержание углеводов(г): ");
+
+            weightFood = ParseInput<double>("Введите вес продукта(г): ");
+
+            return new Food(foodName, proteins, fats, carbohydrates, calories);
         }
 
         private static T ParseInput<T>(string message)
