@@ -16,10 +16,21 @@ namespace FitnessApp.BL.Controllers
         /// Пользователь
         /// </summary>
         private readonly User user;
+
+        /// <summary>
+        /// Список продуктов
+        /// </summary>
         public List<Food> Foods { get; }
 
+        /// <summary>
+        /// Прием пищи
+        /// </summary>
         public Eating Eating { get; }
 
+        /// <summary>
+        /// Создание нового контроллера приема пищи
+        /// </summary>
+        /// <param name="user"> Пользователь. </param>
         public EatingController(User user)
         {
             this.user = user ?? throw new ArgumentNullException("Не может отсутствовать пользователь.", nameof(user));
@@ -27,6 +38,11 @@ namespace FitnessApp.BL.Controllers
             Eating = GetEating();
         }
 
+        /// <summary>
+        /// Добавление нового продукта/занесение в прием пищи
+        /// </summary>
+        /// <param name="food"></param>
+        /// <param name="weight"></param>
         public void Add(Food food, double weight)
         {
             var product = Foods.SingleOrDefault(x => x.Name == food.Name);

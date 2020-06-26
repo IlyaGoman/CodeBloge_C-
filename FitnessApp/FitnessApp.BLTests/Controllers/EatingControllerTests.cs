@@ -16,16 +16,18 @@ namespace FitnessApp.BL.Controllers.Tests
         public void AddTest()
         {
             //Arrange
-            var eatingController = new EatingController(new User("Ilya"));
+            var userName = Guid.NewGuid().ToString();
+            var foodName = Guid.NewGuid().ToString();
+            var eatingController = new EatingController(new User(userName));
 
-            var addFood = new Food("Water");
+            var addFood = new Food(foodName);
             var weight = 300;
 
             //Act
             eatingController.Add(addFood, weight);
 
             //Assert
-            Assert.AreEqual(addFood.Name, eatingController.Foods.SingleOrDefault(f=>f.Name==addFood.Name));
+            Assert.AreEqual(addFood.Name, eatingController.Foods.SingleOrDefault(f=>f.Name==addFood.Name).Name);
         }
     }
 }

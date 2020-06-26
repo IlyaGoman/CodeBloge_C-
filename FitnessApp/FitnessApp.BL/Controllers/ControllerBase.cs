@@ -26,6 +26,7 @@ namespace FitnessApp.BL.Controllers
             }
         }
 
+
         /// <summary>
         /// Загрузка информации из файла в List<T>
         /// </summary>
