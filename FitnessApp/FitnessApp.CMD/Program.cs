@@ -1,5 +1,6 @@
 ﻿using FitnessApp.BL.Controllers;
 using FitnessApp.BL.Model;
+using FitnessApp.CMD.Languages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,9 @@ namespace FitnessApp.CMD
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Вас приветствует приложение FitnessApp");
+            Console.WriteLine(Ru_Ru_Resource.Hello);
 
-            Console.Write("Введите имя пользователя: ");
+            Console.Write(Ru_Ru_Resource.InputName);
             var userNme = Console.ReadLine();
 
             var userController = new UserController(userNme);
