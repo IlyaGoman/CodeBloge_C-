@@ -22,24 +22,24 @@ namespace FitnessApp.CMD.Languages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Ru_Ru_Resource {
+    public class En_En_Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Ru_Ru_Resource() {
+        internal En_En_Resource() {
         }
         
         /// <summary>
         ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FitnessApp.CMD.Languages.Ru-Ru.Resource", typeof(Ru_Ru_Resource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FitnessApp.CMD.Languages.En-En.Resource", typeof(En_En_Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace FitnessApp.CMD.Languages {
         ///   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,27 +61,27 @@ namespace FitnessApp.CMD.Languages {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Вас приветствует приложение FitnessApp.
+        ///   Ищет локализованную строку, похожую на Welcome to FitnessApp.
         /// </summary>
-        internal static string Hello {
+        public static string Hello {
             get {
                 return ResourceManager.GetString("Hello", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Введите пол пользователя:.
+        ///   Ищет локализованную строку, похожую на Please input UserGender:.
         /// </summary>
-        internal static string InputGender {
+        public static string InputGender {
             get {
                 return ResourceManager.GetString("InputGender", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Введите имя пользователя:.
+        ///   Ищет локализованную строку, похожую на Please input UserName: .
         /// </summary>
-        internal static string InputName {
+        public static string InputName {
             get {
                 return ResourceManager.GetString("InputName", resourceCulture);
             }
