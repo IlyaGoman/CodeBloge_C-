@@ -3,6 +3,7 @@ using System.Data.Odbc;
 
 namespace FitnessApp.BL.Model
 {
+    [Serializable]
     public class Activity
     {
         /// <summary>
