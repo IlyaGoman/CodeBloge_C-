@@ -44,6 +44,7 @@
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\EatingController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Model\Activity.cs" />
     <Compile Include="Model\Eating.cs" />
     <Compile Include="Model\Food.cs" />
     <Compile Include="Model\Helper.cs" />
