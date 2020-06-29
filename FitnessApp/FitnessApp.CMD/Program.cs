@@ -4,7 +4,9 @@ using FitnessApp.CMD.Languages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,9 +16,12 @@ namespace FitnessApp.CMD
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Ru_Ru_Resource.Hello);
+            var culture = CultureInfo.CreateSpecificCulture("en-us");
+            var resourcesManager = new ResourceManager("FitnessApp.CMD.Languages.Messages", typeof(Program).Assembly);
 
-            Console.Write(Ru_Ru_Resource.InputName);
+            Console.WriteLine(resourcesManager.GetString("Hello", culture));
+
+            Console.Write(resourcesManager.GetString("InputName", culture));
             var userNme = Console.ReadLine();
 
             var userController = new UserController(userNme);
@@ -24,7 +29,7 @@ namespace FitnessApp.CMD
             if(userController.IsNewUser)
             {
                 Console.WriteLine();
-                Console.Write("Введите пол пользователя: ");
+                Console.Write(resourcesManager.GetString("InputGender", culture));
                 var gender = Console.ReadLine();
 
                 var birthDate = ParseInput<DateTime>("Введите дату рождения пользователя (dd.MM.yyyy): ");
