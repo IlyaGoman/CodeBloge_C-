@@ -8,12 +8,12 @@ namespace FitnessApp.BL.Model
         /// <summary>
         /// Наименование активности
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; }
 
         /// <summary>
         /// Расход калорий за одну минуту
         /// </summary>
-        public double CaloriesPerMinute { get; set; }
+        public double CaloriesPerMinute { get; }
 
         public Activity(string name, double caloriesPerMinute)
         {
@@ -29,6 +29,11 @@ namespace FitnessApp.BL.Model
 
             Name = name;
             CaloriesPerMinute = caloriesPerMinute;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }
