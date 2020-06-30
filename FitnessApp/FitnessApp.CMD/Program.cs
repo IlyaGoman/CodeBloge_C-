@@ -16,6 +16,8 @@ namespace FitnessApp.CMD
     {
         static void Main(string[] args)
         {
+            Random rnd = new Random();
+
             var culture = CultureInfo.CreateSpecificCulture("en-us");
             var resourcesManager = new ResourceManager("FitnessApp.CMD.Languages.Messages", typeof(Program).Assembly);
 
@@ -44,9 +46,12 @@ namespace FitnessApp.CMD
             Console.WriteLine(userController.CurrentUser);
 
             var eatingController = new EatingController(userController.CurrentUser);
+            var exersiceController = new ExerciseController(userController.CurrentUser);
 
             Console.WriteLine("Выберете действие:");
             Console.WriteLine("E - ввести прием пищи");
+            Console.WriteLine("A - ввести упражнение");
+
             var inputKey = Console.ReadKey();
             Console.WriteLine();
 
@@ -57,6 +62,12 @@ namespace FitnessApp.CMD
                         var weightFood = 0.0;
                         var food = FillEating(out weightFood);
                         eatingController.Add(food, weightFood);
+                        break;
+                    }
+                case ConsoleKey.A:
+                    {
+                        var activity = FillActivity();
+                        exersiceController.Add(activity, DateTime.Now.AddMinutes(rnd.Next(-10, -1)), DateTime.Now);
                         break;
                     }
                 default:
@@ -71,13 +82,29 @@ namespace FitnessApp.CMD
                 Console.WriteLine($"{food.Key} - {food.Value}");
             }
 
+            Console.WriteLine();
+            Console.WriteLine(exersiceController.ToString());
+            foreach (var exersice in exersiceController.Exercises)
+            {
+                Console.WriteLine($"{exersice.User.Name} выполнил {exersice.Activity} за {exersice.Finish - exersice.Start} минут. Затратив {exersice.GetExpensiveCalories()} калорий.");
+            }
 
             Console.ReadLine();
         }
 
+        private static Activity FillActivity()
+        {
+            Console.Write("Введите наименование упражнения: ");
+            var activityName = Console.ReadLine();
+
+            var caloriesPerMinute = ParseInput<double>("Введите расход калорий(кКал): ");
+
+            return new Activity(activityName, caloriesPerMinute);
+        }
+
         private static Food FillEating(out double weightFood)
         {
-            Console.WriteLine("Введите наименование продукта: ");
+            Console.Write("Введите наименование продукта: ");
             var foodName = Console.ReadLine();
 
             var calories = ParseInput<double>("Введите калорийность продукта(кКал): ");
@@ -103,42 +130,5 @@ namespace FitnessApp.CMD
 
             return result;
         }
-
-        //public static void CreateUser(string name)
-        //{
-        //    Console.WriteLine();
-        //    Console.Write("Введите пол пользователя: ");
-        //    var gender = Console.ReadLine();
-
-        //    Console.WriteLine();
-        //    Console.Write("Введите дату рождения пользователя: ");
-        //    var birthDate = DateTime.Parse(Console.ReadLine());
-
-        //    Console.WriteLine();
-        //    Console.Write("Введите вес пользователя(кг): ");
-        //    var weight = double.Parse(Console.ReadLine());
-
-        //    Console.WriteLine();
-        //    Console.Write("Введите рост пользователя(см): ");
-        //    var height = double.Parse(Console.ReadLine());
-
-        //    var userController = new UserController(name, gender, birthDate, weight, height);
-        //    userController.Save();
-
-        //}
-
-        //public static bool IsExistsUser(string name)
-        //{
-        //    var userController = new UserController();
-
-        //    if (userController.User.Name == name)
-        //    {
-        //        Console.WriteLine("Добро пожаловать.Вы вошли как:");
-        //        Console.WriteLine(userController.User);
-        //        return true;
-        //    }
-
-        //    return false;
-        //}
     }
 }

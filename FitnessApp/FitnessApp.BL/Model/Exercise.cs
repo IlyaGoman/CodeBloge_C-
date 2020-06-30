@@ -46,6 +46,11 @@ namespace FitnessApp.BL.Model
         /// </summary>
         public Activity Activity { get; }
 
+        public double GetExpensiveCalories()
+        {
+            return Activity.CaloriesPerMinute * ((TimeSpan)(Finish - Start)).TotalMinutes;
+        }
+
         /// <summary>
         /// Пользователь
         /// </summary>
@@ -53,10 +58,7 @@ namespace FitnessApp.BL.Model
 
         public Exercise(DateTime start, DateTime finish, Activity activity, User user)
         {
-            // TODO: Доделать проверки для Exercise
-
-            User = user ?? throw new ArgumentNullException("Пользователь не может быть пустым", nameof(user));
-            
+            User = user ?? throw new ArgumentNullException("Пользователь не может быть пустым", nameof(user));   
             Start = start;
             Finish = finish;
             Activity = activity ?? throw new ArgumentNullException("Активность не может быть пустым", nameof(activity));
