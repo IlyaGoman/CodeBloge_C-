@@ -51,6 +51,7 @@ namespace FitnessApp.CMD
             Console.WriteLine("Выберете действие:");
             Console.WriteLine("E - ввести прием пищи");
             Console.WriteLine("A - ввести упражнение");
+            Console.WriteLine("Q - выход");
 
             var inputKey = Console.ReadKey();
             Console.WriteLine();
@@ -68,6 +69,11 @@ namespace FitnessApp.CMD
                     {
                         var activity = FillActivity();
                         exersiceController.Add(activity, DateTime.Now.AddMinutes(rnd.Next(-10, -1)), DateTime.Now);
+                        break;
+                    }
+                case ConsoleKey.Q:
+                    {
+                        Environment.Exit(0);
                         break;
                     }
                 default:
