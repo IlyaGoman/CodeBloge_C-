@@ -8,6 +8,7 @@ namespace FitnessApp.BL.Model
     [Serializable]
     public class Food
     {
+        public int Id { get; set; }
         /// <summary>
         /// Имя продукта
         /// </summary>

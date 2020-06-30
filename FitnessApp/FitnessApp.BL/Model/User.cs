@@ -8,6 +8,7 @@ namespace FitnessApp.BL.Model
     [Serializable]
     public class User
     {
+        public int Id { get; set; }
         private Gender gender;
         private DateTime birthDate;
         private double weight;
@@ -19,10 +20,11 @@ namespace FitnessApp.BL.Model
         /// </summary>
         public string Name { get; }
 
+        public int GenderId { get; set; }
         /// <summary>
         /// Пол пользователя.
         /// </summary>
-        public Gender Gender
+        public virtual Gender Gender
         {
             get => gender;
             set => gender = value ?? throw new ArgumentNullException("Пол не может быть пустым.", nameof(gender));

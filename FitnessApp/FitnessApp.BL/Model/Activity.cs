@@ -6,6 +6,7 @@ namespace FitnessApp.BL.Model
     [Serializable]
     public class Activity
     {
+        public int Id { get; set; }
         /// <summary>
         /// Наименование активности
         /// </summary>

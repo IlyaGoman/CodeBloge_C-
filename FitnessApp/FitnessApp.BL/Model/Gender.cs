@@ -8,6 +8,7 @@ namespace FitnessApp.BL.Model
     [Serializable]
     public class Gender
     {
+        public int Id { get; set; }
         /// <summary>
         /// Наименование пола.
         /// </summary>

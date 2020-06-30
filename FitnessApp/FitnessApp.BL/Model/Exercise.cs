@@ -5,6 +5,8 @@ namespace FitnessApp.BL.Model
     [Serializable]
     public class Exercise
     {
+        public int Id { get; set; }
+
         private DateTime start;
         private DateTime finish;
         /// <summary>
@@ -41,20 +43,22 @@ namespace FitnessApp.BL.Model
             }
         }
 
+        public int ActivityId { get; set; }
         /// <summary>
         /// Вид активности
         /// </summary>
-        public Activity Activity { get; }
+        public virtual Activity Activity { get; }
 
         public double GetExpensiveCalories()
         {
             return Activity.CaloriesPerMinute * ((TimeSpan)(Finish - Start)).TotalMinutes;
         }
 
+        public int UserId { get; set; }
         /// <summary>
         /// Пользователь
         /// </summary>
-        public User User { get; }
+        public virtual User User { get; }
 
         public Exercise(DateTime start, DateTime finish, Activity activity, User user)
         {
