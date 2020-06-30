@@ -42,8 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ControllerBase.cs" />
+    <Compile Include="Controllers\DataBaseSaver.cs" />
     <Compile Include="Controllers\EatingController.cs" />
     <Compile Include="Controllers\ExerciseController.cs" />
+    <Compile Include="Controllers\IDataSaver.cs" />
+    <Compile Include="Controllers\SerializeDataSaver.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Model\Activity.cs" />
     <Compile Include="Model\Eating.cs" />

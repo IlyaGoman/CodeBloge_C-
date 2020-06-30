@@ -10,6 +10,8 @@ namespace FitnessApp.BL.Controllers
     /// </summary>
     public abstract class ControllerBase
     {
+        protected IDataSaver saver = new SerializeDataSaver();
+
         /// <summary>
         /// Сохраняет предоставленный List<T>
         /// </summary>
@@ -18,12 +20,7 @@ namespace FitnessApp.BL.Controllers
         /// <param name="obj"> Список, который необходимо сохранить. </param>
         protected void Save<T>(string fileName, T obj)
         {
-            var binFormatter = new BinaryFormatter();
-
-            using (var file = new FileStream(fileName, FileMode.OpenOrCreate))
-            {
-                binFormatter.Serialize(file, obj);
-            }
+            saver.Save(fileName, obj);
         }
 
 
@@ -35,21 +32,7 @@ namespace FitnessApp.BL.Controllers
         /// <returns> Возвращает List<T> </returns>
         protected T Load<T>(string fileName)
         {
-            var binFormatter = new BinaryFormatter();
-
-            using (var file = new FileStream(fileName, FileMode.OpenOrCreate))
-            {
-                try
-                {
-                    if (file.Length > 0 && binFormatter.Deserialize(file) is T result)
-                    {
-                        return result;
-                    }
-                }
-                catch { }
-            }
-
-            return default(T);
+            return saver.Load<T>(fileName);
         }
     }
 }
