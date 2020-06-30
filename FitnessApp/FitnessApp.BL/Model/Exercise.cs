@@ -6,13 +6,14 @@ namespace FitnessApp.BL.Model
     public class Exercise
     {
         private DateTime start;
+        private DateTime finish;
         /// <summary>
         /// Время начала выполнения упражнения
         /// </summary>
         public DateTime Start 
         { 
             get => start; 
-            set
+            private set
             {
                 if (value <= User.BirthDate || value >= DateTime.Now)
                 {
@@ -23,11 +24,22 @@ namespace FitnessApp.BL.Model
             }
         }
 
-
         /// <summary>
         /// Время окончания выполнения упражнения
         /// </summary>
-        public DateTime Finish { get; }
+        public DateTime Finish
+        {
+            get => finish;
+            private set
+            {
+                if (value <= Start || value >= DateTime.Now)
+                {
+                    throw new ArgumentException("Время окончания выполнения упражнения не может быть меньше начала выполнения или даты рождения пользователя.", nameof(finish));
+                }
+
+                finish = value;
+            }
+        }
 
         /// <summary>
         /// Вид активности
@@ -43,10 +55,11 @@ namespace FitnessApp.BL.Model
         {
             // TODO: Доделать проверки для Exercise
 
-            User = user;
+            User = user ?? throw new ArgumentNullException("Пользователь не может быть пустым", nameof(user));
+            
             Start = start;
             Finish = finish;
-            Activity = activity;
+            Activity = activity ?? throw new ArgumentNullException("Активность не может быть пустым", nameof(activity));
         }
     }
 }
