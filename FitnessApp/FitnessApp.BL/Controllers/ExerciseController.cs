@@ -6,7 +6,7 @@ using System.Linq;
 namespace FitnessApp.BL.Controllers
 {
     [Serializable]
-    public class ExerciseController: ControllerBase
+    public class ExerciseController: ControllerBase<Exercise>
     {
         private const string EXERCISES_FILE_NAME = "exercises.bin";
         private const string ACTIVITIES_FILE_NAME = "activities.bin";

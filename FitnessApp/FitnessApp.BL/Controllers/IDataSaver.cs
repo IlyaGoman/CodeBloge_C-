@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FitnessApp.BL.Controllers
 {
-    public interface IDataSaver
+    public interface IDataSaver<T> where T : class
     {
-        void Save<T>(string fileName, T obj);
-        T Load<T>(string fileName);
+        void Save(T obj);
+        List<T> Load();
     }
 }

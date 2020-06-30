@@ -8,19 +8,18 @@ namespace FitnessApp.BL.Controllers
     /// <summary>
     /// Базовый класс для контроллеров.
     /// </summary>
-    public abstract class ControllerBase
+    public abstract class ControllerBase<T> where T : class
     {
-        protected IDataSaver saver = new SerializeDataSaver();
+        protected IDataSaver<T> manager = new SerializeDataSaver<T>();
 
         /// <summary>
         /// Сохраняет предоставленный List<T>
         /// </summary>
         /// <typeparam name="T"> Тип объекта сохранения. </typeparam>
-        /// <param name="fileName"> Путь к файлу. </param>
         /// <param name="obj"> Список, который необходимо сохранить. </param>
-        protected void Save<T>(string fileName, T obj)
+        protected void Save(T obj)
         {
-            saver.Save(fileName, obj);
+            manager.Save(obj);
         }
 
 
@@ -30,9 +29,9 @@ namespace FitnessApp.BL.Controllers
         /// <typeparam name="T"> Тип получаемых объектов. </typeparam>
         /// <param name="fileName"> Пусть к файлу. </param>
         /// <returns> Возвращает List<T> </returns>
-        protected T Load<T>(string fileName)
+        protected List<T> Load()
         {
-            return saver.Load<T>(fileName);
+            return manager.Load();
         }
     }
 }
