@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace FitnessApp.BL.Model
 {
@@ -12,8 +14,14 @@ namespace FitnessApp.BL.Model
         /// <summary>
         /// Наименование пола.
         /// </summary>
-        public string Name { get; }
+        public string Name { get; set; }
 
+        public ICollection<User> Users { get; set; }
+
+        public Gender()
+        {
+
+        }
         /// <summary>
         /// Создание пола
         /// </summary>

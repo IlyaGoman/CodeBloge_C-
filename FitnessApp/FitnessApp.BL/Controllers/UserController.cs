@@ -13,10 +13,8 @@ namespace FitnessApp.BL.Controllers
     /// <summary>
     /// Контроллер пользователя.
     /// </summary>
-    public class UserController : ControllerBase<User>
+    public class UserController : ControllerBase
     {
-        private const string USERS_FILE_NAME = "users.bin";
-
         #region Свойства
         /// <summary>
         /// Список пользователей приложения.
@@ -51,21 +49,7 @@ namespace FitnessApp.BL.Controllers
                 CurrentUser = new User(userName);
                 Users.Add(CurrentUser);
                 IsNewUser = true;
-                Save();
             }
-        }
-
-        /// <summary>
-        /// Создание нового контроллера пользователя.
-        /// </summary>
-        /// <param name="user"> Пользователь. </param>
-        public UserController(string name, string nameGender, DateTime birthDate, double weight, double height)
-        {
-            var gender = new Gender(nameGender);
-            var user = new User(name, gender, birthDate, weight, height);
-
-            Users.Add(user);
-            Save();
         }
 
         /// <summary>
@@ -90,8 +74,7 @@ namespace FitnessApp.BL.Controllers
         /// </summary>
         private void Save()
         {
-            //Save(USERS_FILE_NAME, Users);
-            Save(Users);
+            Save<User>(Users);
         }
 
         /// <summary>
@@ -100,7 +83,7 @@ namespace FitnessApp.BL.Controllers
         /// <returns> Пользователь. </returns>
         public List<User> GetAllUsers()
         {
-            return Load<User>();
+            return Load<User>() ?? new List<User>();
         }
     }
 }

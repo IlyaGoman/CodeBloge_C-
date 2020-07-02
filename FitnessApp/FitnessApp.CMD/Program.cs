@@ -48,51 +48,56 @@ namespace FitnessApp.CMD
             var eatingController = new EatingController(userController.CurrentUser);
             var exersiceController = new ExerciseController(userController.CurrentUser);
 
-            Console.WriteLine("Выберете действие:");
-            Console.WriteLine("E - ввести прием пищи");
-            Console.WriteLine("A - ввести упражнение");
-            Console.WriteLine("Q - выход");
-
-            var inputKey = Console.ReadKey();
-            Console.WriteLine();
-
-            switch (inputKey.Key)
-            { 
-                case ConsoleKey.E:
-                    {
-                        var weightFood = 0.0;
-                        var food = FillEating(out weightFood);
-                        eatingController.Add(food, weightFood);
-                        break;
-                    }
-                case ConsoleKey.A:
-                    {
-                        var activity = FillActivity();
-                        exersiceController.Add(activity, DateTime.Now.AddMinutes(rnd.Next(-10, -1)), DateTime.Now);
-                        break;
-                    }
-                case ConsoleKey.Q:
-                    {
-                        Environment.Exit(0);
-                        break;
-                    }
-                default:
-                    Console.WriteLine("Введена неверная команда!");
-                    break;
-            }
-
-            Console.WriteLine();
-            Console.WriteLine(eatingController.ToString());
-            foreach (var food in eatingController.Eating.Foods)
+            while (true)
             {
-                Console.WriteLine($"{food.Key} - {food.Value}");
-            }
+                Console.WriteLine("Выберете действие:");
+                Console.WriteLine("E - ввести прием пищи");
+                Console.WriteLine("A - ввести упражнение");
+                Console.WriteLine("Q - выход");
 
-            Console.WriteLine();
-            Console.WriteLine(exersiceController.ToString());
-            foreach (var exersice in exersiceController.Exercises)
-            {
-                Console.WriteLine($"{exersice.User.Name} выполнил {exersice.Activity} за {exersice.Finish - exersice.Start} минут. Затратив {exersice.GetExpensiveCalories()} калорий.");
+                var inputKey = Console.ReadKey();
+                Console.WriteLine();
+
+                switch (inputKey.Key)
+                {
+                    case ConsoleKey.E:
+                        {
+                            var weightFood = 0.0;
+                            var food = FillEating(out weightFood);
+                            eatingController.Add(food, weightFood);
+
+                            Console.WriteLine();
+                            Console.WriteLine(eatingController.ToString());
+                            foreach (var f in eatingController.Eating.Foods)
+                            {
+                                Console.WriteLine($"{f.Key} - {f.Value}");
+                            }
+
+                            break;
+                        }
+                    case ConsoleKey.A:
+                        {
+                            var activity = FillActivity();
+                            exersiceController.Add(activity, DateTime.Now.AddMinutes(rnd.Next(-10, -1)), DateTime.Now);
+
+                            Console.WriteLine();
+                            Console.WriteLine(exersiceController.ToString());
+                            foreach (var exersice in exersiceController.Exercises)
+                            {
+                                Console.WriteLine($"{exersice.User.Name} выполнил {exersice.Activity} за {exersice.Finish - exersice.Start} минут. Затратив {exersice.GetExpensiveCalories()} калорий.");
+                            }
+
+                            break;
+                        }
+                    case ConsoleKey.Q:
+                        {
+                            Environment.Exit(0);
+                            break;
+                        }
+                    default:
+                        Console.WriteLine("Введена неверная команда!");
+                        break;
+                }
             }
 
             Console.ReadLine();

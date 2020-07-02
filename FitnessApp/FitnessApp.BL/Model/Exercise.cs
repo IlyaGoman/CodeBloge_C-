@@ -47,25 +47,29 @@ namespace FitnessApp.BL.Model
         /// <summary>
         /// Вид активности
         /// </summary>
-        public virtual Activity Activity { get; }
-
-        public double GetExpensiveCalories()
-        {
-            return Activity.CaloriesPerMinute * ((TimeSpan)(Finish - Start)).TotalMinutes;
-        }
+        public virtual Activity Activity { get; set; }
 
         public int UserId { get; set; }
         /// <summary>
         /// Пользователь
         /// </summary>
-        public virtual User User { get; }
+        public virtual User User { get; set; }
 
+        public Exercise()
+        {
+
+        }
         public Exercise(DateTime start, DateTime finish, Activity activity, User user)
         {
-            User = user ?? throw new ArgumentNullException("Пользователь не может быть пустым", nameof(user));   
+            User = user ?? throw new ArgumentNullException("Пользователь не может быть пустым", nameof(user));
             Start = start;
             Finish = finish;
             Activity = activity ?? throw new ArgumentNullException("Активность не может быть пустым", nameof(activity));
+        }
+
+        public double GetExpensiveCalories()
+        {
+            return Activity.CaloriesPerMinute * ((TimeSpan)(Finish - Start)).TotalMinutes;
         }
     }
 }

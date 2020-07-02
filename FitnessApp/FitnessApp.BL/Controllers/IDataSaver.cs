@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 namespace FitnessApp.BL.Controllers
 {
-    public interface IDataSaver<T> where T : class
+    public interface IDataSaver
     {
-        void Save(T obj);
-        List<T> Load();
+        void Save<T>(List<T> obj) where T : class;
+
+        List<T> Load<T>() where T : class;
     }
 }

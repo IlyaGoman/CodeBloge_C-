@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Odbc;
 
 namespace FitnessApp.BL.Model
@@ -10,12 +11,19 @@ namespace FitnessApp.BL.Model
         /// <summary>
         /// Наименование активности
         /// </summary>
-        public string Name { get; }
+        public string Name { get; set; }
+
+        public virtual ICollection<Exercise> Exersices { get; set; }
 
         /// <summary>
         /// Расход калорий за одну минуту
         /// </summary>
-        public double CaloriesPerMinute { get; }
+        public double CaloriesPerMinute { get; set; }
+
+        public Activity()
+        {
+
+        }
 
         public Activity(string name, double caloriesPerMinute)
         {

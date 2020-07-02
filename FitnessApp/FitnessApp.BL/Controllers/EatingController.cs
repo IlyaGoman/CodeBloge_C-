@@ -8,10 +8,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace FitnessApp.BL.Controllers
 {
     [Serializable]
-    public class EatingController : ControllerBase<Eating>
+    public class EatingController : ControllerBase
     {
-        private const string EATINGS_FILE_NAME = "eatings.bin";
-        private const string FOODS_FILE_NAME = "foods.bin";
         /// <summary>
         /// Пользователь
         /// </summary>
@@ -64,7 +62,7 @@ namespace FitnessApp.BL.Controllers
         /// <returns></returns>
         private Eating GetEating()
         {
-            return Load().First();
+            return Load<Eating>().FirstOrDefault() ?? new Eating(user);
         }
 
         /// <summary>
@@ -73,7 +71,7 @@ namespace FitnessApp.BL.Controllers
         /// <returns></returns>
         private List<Food> GetAllFoods()
         {
-            return Load();
+            return Load<Food>() ?? new List<Food>();
         }
 
         /// <summary>
@@ -81,7 +79,8 @@ namespace FitnessApp.BL.Controllers
         /// </summary>
         private void Save()
         {
-            Save();
+            Save(Foods);
+            Save(new List<Eating>() { Eating });
         }
 
         public override string ToString()

@@ -5,11 +5,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace FitnessApp.BL.Controllers
 {
-    public class SerializeDataSaver<T> : IDataSaver<T> where T : class
+    public class SerializeDataSaver : IDataSaver
     {
-        public List<T> Load()
+        public List<T> Load<T>() where T : class
         {
-            var fileName = typeof(T) + ".bin";
+            var fileName = typeof(T).Name + ".bin";
             var binFormatter = new BinaryFormatter();
 
             using (var file = new FileStream(fileName, FileMode.OpenOrCreate))
@@ -27,9 +27,9 @@ namespace FitnessApp.BL.Controllers
             return new List<T>();
         }
 
-        public void Save(T obj)
+        public void Save<T>(List<T> obj) where T : class
         {
-            var fileName = typeof(T) + ".bin";
+            var fileName = typeof(T).Name + ".bin";
             var binFormatter = new BinaryFormatter();
 
             using (var file = new FileStream(fileName, FileMode.OpenOrCreate))

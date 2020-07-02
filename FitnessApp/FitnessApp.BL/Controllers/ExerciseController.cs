@@ -6,10 +6,8 @@ using System.Linq;
 namespace FitnessApp.BL.Controllers
 {
     [Serializable]
-    public class ExerciseController: ControllerBase<Exercise>
+    public class ExerciseController: ControllerBase
     {
-        private const string EXERCISES_FILE_NAME = "exercises.bin";
-        private const string ACTIVITIES_FILE_NAME = "activities.bin";
 
         private readonly User user;
 
@@ -56,7 +54,7 @@ namespace FitnessApp.BL.Controllers
         /// <returns></returns>
         private List<Exercise> GetExercises()
         {
-            return Load<List<Exercise>>(EXERCISES_FILE_NAME) ?? new List<Exercise>();
+            return Load<Exercise>() ?? new List<Exercise>();
         }
 
         /// <summary>
@@ -65,7 +63,7 @@ namespace FitnessApp.BL.Controllers
         /// <returns></returns>
         private List<Activity> GetActivities()
         {
-            return Load<List<Activity>>(ACTIVITIES_FILE_NAME) ?? new List<Activity>();
+            return Load<Activity>() ?? new List<Activity>();
         }
 
         /// <summary>
@@ -73,8 +71,8 @@ namespace FitnessApp.BL.Controllers
         /// </summary>
         private void Save()
         {
-            base.Save(EXERCISES_FILE_NAME, Exercises);
-            base.Save(ACTIVITIES_FILE_NAME, Activities);
+            Save(Exercises);
+            Save(Activities);
         }
 
         public override string ToString()

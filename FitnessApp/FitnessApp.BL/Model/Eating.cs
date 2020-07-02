@@ -27,6 +27,11 @@ namespace FitnessApp.BL.Model
         /// </summary>
         public virtual User User { get; }
 
+        public Eating()
+        {
+
+        }
+
         public Eating(User user)
         {
             User = user ?? throw new ArgumentNullException("Не может отсутствовать пользователь.", nameof(user));

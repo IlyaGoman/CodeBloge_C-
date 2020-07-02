@@ -5,29 +5,24 @@ using System.Linq;
 
 namespace FitnessApp.BL.Controllers
 {
-    public class DataBaseSaver<T> : IDataSaver<T> where T : class
+    public class DataBaseSaver : IDataSaver
     {
-        public List<T> Load(string fileName)
+        public List<T> Load<T>() where T : class
         {
             using (var db = new FitnessContext())
             {
                 return db.Set<T>()
                     .Where(k => true)
-                    .ToList() ?? new List<T>();
+                    .ToList();
             }
         }
 
-        public List<T> Load()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save(T obj)
+        public void Save<T>(List<T> obj) where T : class
         {
 
             using (var db = new FitnessContext())
             {
-                db.Set<T>().Add(obj);
+                db.Set<T>().AddRange(obj);
 
                 #region if-else
                 //var type = typeof(T);

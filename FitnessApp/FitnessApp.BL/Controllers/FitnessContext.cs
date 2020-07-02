@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace FitnessApp.BL.Controllers
 {
-    public class FitnessContext:DbContext
+    public class FitnessContext : DbContext
     {
         public FitnessContext(): base("DbConnectionString")
         {

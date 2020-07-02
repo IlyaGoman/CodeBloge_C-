@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FitnessApp.BL.Model
 {
@@ -20,7 +21,7 @@ namespace FitnessApp.BL.Model
         /// </summary>
         public string Name { get; }
 
-        public int GenderId { get; set; }
+        public int? GenderId { get; set; }
         /// <summary>
         /// Пол пользователя.
         /// </summary>
@@ -93,7 +94,16 @@ namespace FitnessApp.BL.Model
             }
         }
 
+        public ICollection<Eating> Eatings { get; set; }
+
+        public ICollection<Exercise> Exercises { get; set; }
+
         #endregion
+
+        public User()
+        {
+
+        }
 
         public User(string userName)
         {

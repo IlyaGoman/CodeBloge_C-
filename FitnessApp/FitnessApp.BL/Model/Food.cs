@@ -1,4 +1,6 @@
 ﻿using System;
+using System.CodeDom;
+using System.Collections.Generic;
 
 namespace FitnessApp.BL.Model
 {
@@ -33,6 +35,13 @@ namespace FitnessApp.BL.Model
         /// Калории за 100гр продукта
         /// </summary>
         public double Calories { get; }
+
+        public virtual ICollection<Eating> Eatings { get; set; }
+
+        public Food()
+        {
+
+        }
 
         public Food(string name) : this(name, 0, 0, 0, 0)
         {
