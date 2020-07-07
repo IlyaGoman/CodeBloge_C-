@@ -11,7 +11,7 @@ namespace FitnessApp.BL.Controllers
     public abstract class ControllerBase
     {
         //private IDataSaver manager = new SerializeDataSaver();
-        private IDataSaver manager = new DataBaseSaver();
+        private IDataSaver manager = new SerializeDataSaver();
 
         /// <summary>
         /// Сохраняет предоставленный List<T>
