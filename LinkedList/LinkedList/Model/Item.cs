@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LinkedList.Model
 {
-    class Item<T>
+    public class Item<T>
     {
         private T data = default(T);
         private Item<T> next = null;
