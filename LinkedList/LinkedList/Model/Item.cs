@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,19 @@ using System.Threading.Tasks;
 
 namespace LinkedList.Model
 {
+    /// <summary>
+    /// Ячейка списка
+    /// </summary>
     public class Item<T>
     {
+        /// <summary>
+        /// Данные хранимые в ячейке списка
+        /// </summary>
         private T data = default(T);
+
+        /// <summary>
+        /// Следующая ячейка
+        /// </summary>
         private Item<T> next = null;
 
         public T Data
