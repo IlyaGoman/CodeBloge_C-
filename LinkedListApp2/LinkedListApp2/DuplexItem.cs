@@ -9,8 +9,6 @@ namespace LinkedListApp2
         public DuplexItem<T> Previous { get; set; }
         public DuplexItem<T> Next { get; set; }
 
-        public DuplexItem() { }
-
         public DuplexItem(T data)
         {
             Data = data;
