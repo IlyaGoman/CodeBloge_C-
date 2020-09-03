@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace LinkedListApp2
 {
-    public class DuplexLinkedList<T>: IEnumerable
+    public class DuplexLinkedList<T>: IEnumerable<T>
     {
         public DuplexItem<T> Head { get; set; }
 
@@ -27,7 +28,8 @@ namespace LinkedListApp2
         public void Add(T data)
         {
             var item = new DuplexItem<T>(data);
-            if (Head == null)
+
+            if (Count == 0)
             {
                 Head = item;
                 Tail = item;
@@ -73,6 +75,21 @@ namespace LinkedListApp2
             }
         }
 
+        public DuplexLinkedList<T> Reverse()
+        {
+            var result = new DuplexLinkedList<T>();
+            
+            var current = Tail;
+            while(current != null)
+            {
+                result.Add(current.Data);
+
+                current = current.Previous;
+            }
+
+            return result;
+        }
+
         public IEnumerator GetEnumerator()
         {
             var current = Head;
@@ -81,6 +98,11 @@ namespace LinkedListApp2
                 yield return current;
                 current = current.Next;
             }
+        }
+
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        {
+            return (IEnumerator<T>)GetEnumerator();
         }
     }
 }

@@ -20,6 +20,21 @@ namespace LinkedListApp2
             }
             Console.WriteLine();
 
+            duplexList.Delete(3);
+
+            foreach (var item in duplexList)
+            {
+                Console.Write(item + " ");
+            }
+            Console.WriteLine();
+
+            var rDuplexLinkedList = duplexList.Reverse();
+
+            foreach (var item in rDuplexLinkedList)
+            {
+                Console.Write(item + " ");
+            }
+
             Console.ReadLine();
         }
     }
