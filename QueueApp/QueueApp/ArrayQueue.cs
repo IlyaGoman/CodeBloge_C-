@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 
 namespace QueueApp
 {
-    public class ArrayQueue<T>
+    public class ArrayQueue<T>:IEnumerable
     {
         private T[] items;
         private T Head => items[Count > 0 ? Count - 1 : 0];
@@ -58,6 +59,15 @@ namespace QueueApp
         public T Peek()
         {
             return Head;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            var array = items;
+            for(int i = 0; i < array.Length; i++)
+            {
+                yield return array[i];
+            }
         }
     }
 }
