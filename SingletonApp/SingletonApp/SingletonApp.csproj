@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C93365BB-613B-4AEC-A2FB-2A142CB999F8}</ProjectGuid>
+    <ProjectGuid>{E34139FF-E9E6-4337-8BC5-EB72C5B17A6B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>QueueApp</RootNamespace>
-    <AssemblyName>QueueApp</AssemblyName>
+    <RootNamespace>SingletonApp</RootNamespace>
+    <AssemblyName>SingletonApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,18 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArrayQueue.cs" />
-    <Compile Include="EasyQueue.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="LinkedQueue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
