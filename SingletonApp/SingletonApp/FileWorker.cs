@@ -46,7 +46,7 @@ namespace SingletonApp
         {
             using (var writer = new StreamWriter(FilePath, false))
             {
-                writer.Write(Text);
+                writer.WriteLine(Text);
             }
         }
 

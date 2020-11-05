@@ -30,7 +30,7 @@ namespace SingletonApp
         /// </summary>
         private FileWorkerSingleton()
         {
-            FilePath = "test.txt";
+            FilePath = "textSingleton.txt";
             ReadTextFromFile();
         }
 
@@ -49,9 +49,9 @@ namespace SingletonApp
         /// <param name="text">Данные для записи.</param>
         public void Save()
         {
-            using (var writer = new StreamWriter(FilePath, false))
+            using (var writer = new StreamWriter(FilePath, true))
             {
-                writer.Write(Text);
+                writer.WriteLine(Text);
             }
         }
 
