@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace DelegateEventApp
 {
     public delegate void MyDelegate(String message);
+    
 
     public class Car
     {
@@ -29,6 +30,10 @@ namespace DelegateEventApp
         static void Main(string[] args)
         {
             Car car = new Car();
+
+            Action<string> action = DisplayMessage;
+
+            action?.Invoke("TestString");
 
             car.DisplayInfo += DisplayMessage;
             car.Move();
