@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace DelegateEventApp
 {
+    public delegate void Mydelegate();
     class Program
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
