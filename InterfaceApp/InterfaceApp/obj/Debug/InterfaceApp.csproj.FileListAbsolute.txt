@@ -4,3 +4,6 @@ F:\C#\CodeBlog\InterfaceApp\InterfaceApp\bin\Debug\InterfaceApp.exe
 F:\C#\CodeBlog\InterfaceApp\InterfaceApp\bin\Debug\InterfaceApp.pdb
 F:\C#\CodeBlog\InterfaceApp\InterfaceApp\obj\Debug\InterfaceApp.exe
 F:\C#\CodeBlog\InterfaceApp\InterfaceApp\obj\Debug\InterfaceApp.pdb
+F:\C#\CodeBlog\CodeBloge_C-\InterfaceApp\InterfaceApp\bin\Debug\InterfaceApp.exe.config
+F:\C#\CodeBlog\CodeBloge_C-\InterfaceApp\InterfaceApp\obj\Debug\InterfaceApp.exe
+F:\C#\CodeBlog\CodeBloge_C-\InterfaceApp\InterfaceApp\obj\Debug\InterfaceApp.pdb
